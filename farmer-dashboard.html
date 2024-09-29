@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard - Product Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Modal & Blur Effects */
+        #addProductModal {
+            display: none;
+        }
+
+        .blur-background {
+            filter: blur(8px);
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Farmer Dashboard Container -->
+    <div id="mainContent" class="container mx-auto mt-10">
+
+        <!-- Section: Product Management -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-gray-700">Product Management</h2>
+
+            <!-- Add Product Button -->
+            <button id="openAddProductModal" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600 mb-4 float-right">
+                Add New Product
+            </button>
+
+            <!-- Product List Table -->
+            <!-- Product List Table -->
+<div class="overflow-x-auto">
+    <h3 class="text-xl font-semibold text-gray-600 mb-4">Your Products</h3>
+    <table class="min-w-full bg-white border-collapse">
+        <thead>
+            <tr>
+                <th class="py-3 px-4 bg-gray-100 font-bold text-gray-600 text-left border-b">Name</th>
+                <th class="py-3 px-4 bg-gray-100 font-bold text-gray-600 text-left border-b">Category</th>
+                <th class="py-3 px-4 bg-gray-100 font-bold text-gray-600 text-left border-b">Price</th>
+                <th class="py-3 px-4 bg-gray-100 font-bold text-gray-600 text-left border-b">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sample Rows for Design -->
+            <tr class="border-b">
+                <td class="py-3 px-4 text-left">Apple</td>
+                <td class="py-3 px-4 text-left">Fruits</td>
+                <td class="py-3 px-4 text-left">$3.00</td>
+                <td class="py-3 px-4 text-left">
+                    <button class="bg-yellow-500 text-white px-4 py-1 rounded-md hover:bg-yellow-600">Edit</button>
+                    <button class="bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-600 ml-2">Delete</button>
+                </td>
+            </tr>
+            <!-- Repeat for additional products -->
+            <tr class="border-b">
+                <td class="py-3 px-4 text-left">Banana</td>
+                <td class="py-3 px-4 text-left">Fruits</td>
+                <td class="py-3 px-4 text-left">$2.00</td>
+                <td class="py-3 px-4 text-left">
+                    <button class="bg-yellow-500 text-white px-4 py-1 rounded-md hover:bg-yellow-600">Edit</button>
+                    <button class="bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-600 ml-2">Delete</button>
+                </td>
+            </tr>
+            <!-- Additional rows as needed -->
+        </tbody>
+    </table>
+</div>
+
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div id="addProductModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-8 rounded-lg w-full max-w-lg relative">
+            <!-- Cancel Button -->
+            <button id="cancelAddProductModal" class="absolute top-0 right-0 mt-4 mr-4 text-gray-600 hover:text-red-500">
+                ✕
+            </button>
+            <h2 class="text-2xl font-bold mb-4 text-gray-700">Add New Product</h2>
+            <form class="space-y-4">
+                <!-- Product Name -->
+                <div>
+                    <label for="productName" class="block text-sm font-medium text-gray-600">Product Name</label>
+                    <input type="text" id="productName" placeholder="Enter Product Name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Category -->
+                <div>
+                    <label for="category" class="block text-sm font-medium text-gray-600">Category</label>
+                    <select id="category" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option value="">Select Category</option>
+                        <option value="fruits">Fruits</option>
+                        <option value="vegetables">Vegetables</option>
+                        <option value="dairy">Dairy</option>
+                    </select>
+                </div>
+                <!-- Price -->
+                <div>
+                    <label for="price" class="block text-sm font-medium text-gray-600">Price</label>
+                    <input type="number" id="price" placeholder="Enter Price" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Description -->
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-600">Description</label>
+                    <textarea id="description" placeholder="Enter Product Description" class="mt-1 block w-full p-2 border border-gray-300 rounded-md"></textarea>
+                </div>
+                <!-- Submit Button -->
+                <div>
+                    <button type="button" id="closeAddProductModal" class="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-600">
+                        Add Product
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript for Modal Functionality -->
+    <script>
+        // Open Add Product Modal
+        document.getElementById('openAddProductModal').onclick = () => {
+            document.getElementById('addProductModal').style.display = 'flex';
+            document.getElementById('mainContent').classList.add('blur-background');
+        };
+
+        // Close Add Product Modal
+        document.getElementById('closeAddProductModal').onclick = document.getElementById('cancelAddProductModal').onclick = () => {
+            document.getElementById('addProductModal').style.display = 'none';
+            document.getElementById('mainContent').classList.remove('blur-background');
+        };
+    </script>
+</body>
+
+</html>
